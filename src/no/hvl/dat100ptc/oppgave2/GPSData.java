@@ -8,13 +8,10 @@ public class GPSData {
 	private GPSPoint[] gpspoints;
 	protected int antall = 0;
 
-	public GPSData(int n) {
-
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.construtor("GPSData"));
-
-		// TODO - SLUTT
+	public GPSData(int antall) {
+		//Setter antall 0 og lager et objekt for GPSPoints i tabellen gpspoints.
+		this.antall=0;
+		gpspoints= new GPSPoint[antall];
 	}
 
 	public GPSPoint[] getGPSPoints() {
@@ -24,37 +21,31 @@ public class GPSData {
 	protected boolean insertGPS(GPSPoint gpspoint) {
 
 		boolean inserted = false;
-
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
+		//Hvis antall er større enn lengden på tabellen vil den ikke sette 
+		//noe inn i tabellen. Setter gpspoint inn i tabellen på gitt plass lik antall.
+		//inkrementerer antall, slik at neste gpspoint blir satt i riktig pos.
+		if (gpspoints.length>antall) {
+			gpspoints[antall]= gpspoint;
+			antall++;
+			inserted=true;
+		}
+		return inserted;
 	}
-
+	//Lager definerer et nytt punkt som skal lagres i gpspoints tabellen og returnerer true hvis det skjer.
 	public boolean insert(String time, String latitude, String longitude, String elevation) {
-
 		GPSPoint gpspoint;
-
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
-		
+		gpspoint= GPSDataConverter.convert(time, latitude, longitude, elevation);
+		return insertGPS(gpspoint);
 	}
 
+	// Skriver ut verdiene til objektene i gpspoints ved hjelp av toString metoden til GPSPoint klassen.
 	public void print() {
-
-		System.out.println("====== Konvertert GPS Data - START ======");
-
-		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
 		
-		// System.out.println("====== Konvertert GPS Data - SLUTT ======");
+		System.out.println("====== Konvertert GPS Data - START ======");
+		for (int i = 0; i<antall; i++) {
+			System.out.print(gpspoints[i].toString());
+		}
+		System.out.println("====== Konvertert GPS Data - SLUTT ======");
 
 	}
 }
