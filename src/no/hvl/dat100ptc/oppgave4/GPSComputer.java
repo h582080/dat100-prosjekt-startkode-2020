@@ -62,7 +62,7 @@ public class GPSComputer {
 	}
 	
 	public double maxSpeed() {
-		
+		//Returnerer største hastigheten beveget mellom to punkter
 		double maxspeed = 0;
 		
 		return GPSUtils.findMax(speeds());
@@ -70,6 +70,7 @@ public class GPSComputer {
 	}
 
 	public double averageSpeed() {
+		//Returnerer gjennomsnittshastigheten totalt sett for hele turen
 		return totalDistance()/totalTime()*3.6;
 	}
 
