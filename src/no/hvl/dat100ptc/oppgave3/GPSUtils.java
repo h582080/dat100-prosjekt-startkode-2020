@@ -23,6 +23,8 @@ public class GPSUtils {
 	}
 
 	public static double findMin(double[] da) {
+		
+		//Finner minste flyttall i tabell
 
 		double min=da[0];
 		for (double d:da) {
@@ -33,6 +35,9 @@ public class GPSUtils {
 	}
 
 	public static double[] getLatitudes(GPSPoint[] gpspoints) {
+		
+		//Skaper en ny tabell som returnerer desimaltall inneholdene breddegrader
+		
 		double [] latitudes = new double [gpspoints.length];
 		for (int i = 0; i < latitudes.length; i++ ) {
 			latitudes[i]=gpspoints[i].getLatitude();
@@ -41,6 +46,8 @@ public class GPSUtils {
 	}
 
 	public static double[] getLongitudes(GPSPoint[] gpspoints) {
+		
+		//Gjør samme som getLatitudes, men for lengdegrader
 		
 		double [] longitudes = new double [gpspoints.length];
 		for (int i = 0; i < longitudes.length; i++ ) {
@@ -56,7 +63,7 @@ public class GPSUtils {
 		double d;
 		double latitude1, longitude1, latitude2, longitude2;
 
-		//finner verdiene for hvert punkt.
+		//finner verdiene for hvert punkt. bruker toRadians for å radiansen 
 		latitude1=Math.toRadians(gpspoint1.getLatitude());
 		latitude2=Math.toRadians(gpspoint2.getLatitude());
 		longitude1=Math.toRadians(gpspoint1.getLongitude());
@@ -74,11 +81,12 @@ public class GPSUtils {
 	}
 
 	public static double speed(GPSPoint gpspoint1, GPSPoint gpspoint2) {
+		//Beregner gjennomsnittshastigheten i km/t
 
 		int secs;
 		double speed;
 		secs=gpspoint2.getTime()-gpspoint1.getTime();
-		speed=(distance(gpspoint1,gpspoint2))/secs*3.6;
+		speed=(distance(gpspoint1,gpspoint2))/secs*3.6; //Multipliserer med 3.6 for å få km/t
 		return speed;
 	}
 
@@ -90,11 +98,13 @@ public class GPSUtils {
 		int hh, mm, ss, rest;
 		String hhStr, mmStr, ssStr;
 		
+		//Gjør til om antall sekunder til, timer, minutter og sekunder
 		hh=secs/3600;	
 		rest=secs%3600;
 		mm=rest/60;
 		rest=rest%60;
 		ss=rest;
+		
 		//Skriver en if statement "one liner". 
 		//F.eks variabel = (statement) ?  true value : false value;
 		//hvis statement er sant vil variabel være lik true value.
@@ -114,13 +124,10 @@ public class GPSUtils {
 
 	public static String formatDouble(double d) {
 		
-		//if funksjon som setter str lik et avrundet tall med to desimaler
-		//med x antall mellomrom forran tallet.
-		String str = String.format("%1$10.2f", d);	
-		String [] strTab = str.split("");
-		strTab[str.indexOf(",")]=".";
-		str=String.join("", strTab);
+		// TODO - START
 
-		return str;	
+		throw new UnsupportedOperationException(TODO.method());
+
+		// TODO - SLUTT
 	}
 }
